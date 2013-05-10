@@ -13,13 +13,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     Image/ImageFile.cpp \
-    Image/ImageFileDirectory.cpp \
-    Image/ImageThumbLoader.cpp
+    Image/ImageFileDirectory.cpp
 
 HEADERS  += \
     Image/ImageFile.h \
-    Image/ImageFileDirectory.h \
-    Image/ImageThumbLoader.h
+    Image/ImageFileDirectory.h
 
 FORMS    +=
 

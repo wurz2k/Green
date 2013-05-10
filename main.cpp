@@ -6,7 +6,6 @@
 #include <QTime>
 #include <QtQml/qqml.h>
 
-#include "Image/ImageThumbLoader.h"
 #include "Image/ImageFile.h"
 #include "Image/ImageFileDirectory.h"
 
@@ -50,14 +49,17 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
 
-    ImageFileDirectory imageDirectory;
-    QQuickView view;
-    ImageLoader imageLoader;
+    QString dir = "d://photo";
+    QSize thumbSize(120, 100);
 
-    view.engine()->addImageProvider("imagethumb", &imageLoader);
+    ImageFileDirectory imageDirectory(dir, thumbSize);
+    QQuickView view;
+
     view.setResizeMode(QQuickView::SizeRootObjectToView);
+
+    view.engine()->addImageProvider("imagethumb", &imageDirectory);
     view.engine()->rootContext()->setContextProperty("imageDirectory", &imageDirectory);
-    view.engine()->rootContext()->setContextProperty("imageThumbLoader", &imageLoader);
+
     view.setSource(QUrl("qrc:/ImagesList.qml"));
 //    view.setSource(QUrl("qrc:/Dashboard.qml"));
     view.show();

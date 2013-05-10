@@ -13,7 +13,6 @@ class ImageFile : public QObject
     Q_PROPERTY(int width READ getWidth WRITE setWidth NOTIFY widthChanged)
     Q_PROPERTY(int height READ getHeight WRITE setHeight NOTIFY heightChanged)
     Q_PROPERTY(int fileSize READ getFileSize WRITE setFileSize NOTIFY fileSizeChanged)
-    Q_PROPERTY(QImage image READ getImage WRITE setImage NOTIFY imageChanged)
 
 public:
     explicit ImageFile(QObject *parent = 0);
@@ -63,21 +62,11 @@ public:
         return fileSize;
     }
 
-    void setImage(const QImage& i) {
-        image = i;
-        emit imageChanged();
-    }
-
-    const QImage& getImage() const {
-        return image;
-    }
-
 signals:
     void fileNameChanged();
     void widthChanged();
     void heightChanged();
     void fileSizeChanged();
-    void imageChanged();
 
 public slots:
 
@@ -86,7 +75,6 @@ private:
     int width;
     int height;
     int fileSize;
-    QImage image;
 };
 
 #endif // IMAGEFILE_H

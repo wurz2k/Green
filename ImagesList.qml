@@ -22,8 +22,8 @@ Rectangle {
         clip: true
         model: imageDirectory.imageFiles
         delegate: nameDelegate
-        cellWidth: imageThumbLoader.thumbWidth
-        cellHeight: imageThumbLoader.thumbHeight
+        cellWidth: imageDirectory.thumbSize.width
+        cellHeight: imageDirectory.thumbSize.height
     }
 
 
